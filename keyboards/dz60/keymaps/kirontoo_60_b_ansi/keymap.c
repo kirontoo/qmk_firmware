@@ -82,5 +82,5 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // Set underglow RGB leds to red
 void matrix_init_user(void) {
-  rgblight_setsv_noeeprom_red();
+  rgblight_sethsv_noeeprom_red();
 }
