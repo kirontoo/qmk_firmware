@@ -79,3 +79,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_NO,           KC_NO,   KC_NO,    KC_NO,   KC_NO,   KC_NO,    KC_0,     KC_PDOT,  KC_LEFT,  KC_DOWN,  KC_RIGHT
     )
 };
+
+// Set underglow RGB leds to red
+void matrix_init_user(void) {
+  rgblight_setsv_noeeprom_red();
+}
