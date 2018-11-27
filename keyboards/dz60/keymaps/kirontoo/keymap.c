@@ -9,10 +9,10 @@
 #define _NUMPAD 4
 
 // To make layers more clear
-#define ____ KC_TRANS
+#define ____ KC_TRNS
 
 // Custom Shortcuts
-#define TSK_MNG LCTRL(LSFT(KC_ESC))   // ctrl+shift+esc
+#define TSK_MNG LCTL(LSFT(KC_ESC))   // ctrl+shift+esc
 #define LCK_SCRN LGUI(KC_L)     // win+L
 #define SHUT_DWN LALT(KC_F4)    // alt+f4
 #define LBRCK LSFT(KC_LBRC)   // left bracket {
@@ -48,16 +48,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_FL] = LAYOUT_60_b_ansi(
       ____,            KC_F1,   KC_F2,    KC_F3,   KC_F4,   KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,           KC_F11,    KC_F12,       KC_PAUS,  KC_PSCR,
       ____,            ____,    ____,     KC_LBRC, KC_RBRC, KC_PPLS,  ____,     KC_PGUP,  KC_HOME,  KC_UP,    KC_END,           ____,      ____,         ____,
-      ____,            ____,    ____,     LBRCK,   RBRCK,   KC_EQL,   ____,     KC_PGDN,  KC_LEFT,  KC_DOWN,  KC_RIGHT,         ____,
+      ____,            ____,    ____,     LBRCK,   RBRCK,   KC_EQL,   ____,     KC_PGDN,  KC_LEFT,  KC_DOWN,  KC_RIGHT,         ____,      ____,
       ____,            ____,    ____,     ____,    ____,    ____,     ____,     ____,     ____,     ____,     KC_INS,           KC_PGUP,   KC_DEL,
       ____,            ____,    ____,     ____,    ____,    ____,     ____,     ____,     KC_HOME,  KC_PGDN,  KC_END
     ),
 
     // Media Layer - Lighting and Media Controls
     [_ML] = LAYOUT_60_b_ansi(
-      ____,            RGB_HUI, RGB_HUD,  RGB_SUI, RGB_SAD, RGB_M_T,  ____,     ____,     ____,     ____,     RGB_TOG,          RGB_VAD,   RGB_VAI,      ____,      ____,
+      ____,            RGB_HUI, RGB_HUD,  RGB_SPI, RGB_SAD, RGB_M_T,  ____,     ____,     ____,     ____,     RGB_TOG,          RGB_VAD,   RGB_VAI,      ____,      ____,
       ____,            ____,    RGB_M_SW, ____,    RGB_M_R, ____,     ____,     ____,     ____,     ____,     RGB_M_P,          RGB_RMOD,  RGB_MOD,      ____,
-      ____,            ____,    RGB_M_S,  ____,    ____,    RGB_M_G,  ____,     ____,     RGB_M_K,  ____,     ____,             ____,
+      ____,            ____,    RGB_M_SN, ____,    ____,    RGB_M_G,  ____,     ____,     RGB_M_K,  ____,     ____,             ____,      ____,
       ____,            ____,    RGB_M_X,  ____,    ____,    RGB_M_B,  ____,     ____,     ____,     ____,     KC_MUTE,          KC_VOLU,   KC_MPLY,
       ____,            ____,    ____,     ____,    ____,    ____,     ____,     ____,     KC_MPRV,  KC_VOLD,  KC_MNXT
     ),
@@ -66,7 +66,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_KL] = LAYOUT_60_b_ansi(
       ____,            ____,    ____,     ____,    ____,    ____,     ____,     ____,     ____,     ____,     SHUT_DWN,         ____,      ____,         ____,      TSK_MNG,
       ____,            ____,    ____,     ____,    ____,    ____,     ____,     ____,     ____,     ____,     ____,             ____,      ____,         ____,
-      ____,            ____,    ____,     ____,    ____,    ____,     ____,     ____,     LCK_SCRN, ____,     ____,             ____,
+      ____,            ____,    ____,     ____,    ____,    ____,     ____,     ____,     LCK_SCRN, ____,     ____,             ____,      ____,
       ____,            ____,    ____,     ____,    ____,    ____,     ____,     ____,     ____,     ____,     ____,             ____,      ____,
       ____,            ____,    ____,     ____,    ____,    ____,     ____,     ____,     ____,     ____,     ____
     ),
@@ -75,7 +75,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_NUMPAD] = LAYOUT_60_b_ansi(
       KC_NO,           KC_NO,   KC_NO,    KC_NO,   KC_NO,   KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_PSLS,  KC_PAST,          KC_PMNS,   KC_PPLS,      KC_BSPC,   KC_NO,
       KC_NO,           KC_NO,   KC_NO,    KC_NO,   KC_NO,   KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_7,     KC_8,             KC_9,      KC_PEQL,      KC_NO,
-      KC_NO,           KC_NO,   KC_NO,    KC_NO,   KC_NO,   KC_NO,    KC_NO,    KC_NO,    KC_4,     KC_5,     KC_6,             KC_PENT,
+      KC_NO,           KC_NO,   KC_NO,    KC_NO,   KC_NO,   KC_NO,    KC_NO,    KC_NO,    KC_4,     KC_5,     KC_6,             KC_NO,     KC_PENT,
       KC_NO,           KC_NO,   KC_NO,    KC_NO,   KC_NO,   KC_NO,    KC_NO,    KC_NO,    KC_1,     KC_2,     KC_3,             KC_UP,     ____,
       KC_NO,           KC_NO,   KC_NO,    KC_NO,   KC_NO,   KC_NO,    KC_0,     KC_PDOT,  KC_LEFT,  KC_DOWN,  KC_RIGHT
     )
