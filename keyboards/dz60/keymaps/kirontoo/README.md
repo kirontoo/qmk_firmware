@@ -118,11 +118,11 @@ These lighting keymaps are all for the RGB underglow.
   ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬────┬────┬────┐
   │   │   │   │   │   │   │   │   │   │   │SDN│   │    │    │TSK │  
   ├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴──┬─┴─┬──┴────┤
-  │     │   │   │   │   │   │   │   │   │   │   │    │   │       │  
+  │     │   │   │   │   │   │   │   │   │   │CMD│    │   │       │  
   ├─────┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬───┴┬──┴───────┤
-  │LT    │   │   │   │   │   │   │   │   │LCK│   │    │          │  
+  │LT    │   │STM│   │   │   │   │   │   │LCK│   │    │          │  
   ├──────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴────┴┬────┬────┤
-  │        │   │   │CLC│   │   │   │   │   │   │       │    │    │  
+  │        │   │   │CLC│VS │BLI│   │   │   │   │       │    │    │  
   ├────┬───┴┬──┴─┬─┴───┴──┬┴───┼───┴───┴──┬┴──┬┴──┬────┼────┼────┤
   │    │    │    │        │FN1 │          │FN2│TT │    │    │    │  
   └────┴────┴────┴────────┴────┴──────────┴───┴───┴────┴────┴────┘
@@ -130,8 +130,9 @@ These lighting keymaps are all for the RGB underglow.
 | KEY  | DESCRIPTION         | KEY  | DESCRIPTION         |
 |------|---------------------|------|---------------------|
 | SDN  | Exit App            | TSK  | Task Manager        |
-| LCK  | Lock Screen         |      |                     |
-| CLC  | Launch Calculator   |      |                     |
+| LCK  | Lock Screen         | CMD  | Command Prompt      |
+| CLC  | Launch Calculator   | STM  | Launch Steam        |
+| BLI  | Launch Blizzard App | VS   | Launch VSCode       |
 
 
 ### _NUMPAD: Number Pad
