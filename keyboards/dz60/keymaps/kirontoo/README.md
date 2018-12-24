@@ -153,7 +153,3 @@ These lighting keymaps are all for the RGB underglow.
 
 ### RGBLIGHT_SLEEP
 This is set in `kirontoo/config.h` so that when the computer goes to sleep, the RGB lights will go sleep as well. They will turn back on when the computer wakes back up.
-
-### RGB Underglow Color
-The RGB underglow color for this keymap is set to red under `kirontoo/keymap.c` in the `matrix_init_user` function. 
-The list of available colors can be found [`quantum/rgblight_list.h`](https://github.com/qmk/qmk_firmware/blob/388df5359b913eaf1ce6fb0ef624e430ad010ea5/quantum/rgblight_list.h#L59-L121).
