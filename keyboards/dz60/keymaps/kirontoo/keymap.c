@@ -25,7 +25,7 @@ enum custom_keycodes {
   VSCODE,
   STEAM,
   BLIZZ
-}
+};
 
 /* LAYOUT_60_b_ansi (maximized DZ60 Plate B layout for ANSI)
  * ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┐
@@ -95,8 +95,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     // Open cmd prompt
     case CMD:
       if (record->event.pressed) {
-        SS_LGUI("r");
-        W(100);   // Wait 100 ms
+        SEND_STRING(SS_LGUI("r"));
         SEND_STRING("cmd" SS_TAP(X_ENTER));
       }
       break;
@@ -104,8 +103,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     // Open VSCode
     case VSCODE:
       if (record->event.pressed) {
-        SS_LGUI("r");
-        W(100);
+        SEND_STRING(SS_LGUI("r"));
         SEND_STRING("code" SS_TAP(X_ENTER));
       }
       break;
@@ -113,16 +111,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     // Open steam
     case STEAM:
       if (record->event.pressed) {
-        SS_LGUI("r");
-        W(100);
+        SEND_STRING(SS_LGUI("r"));
         SEND_STRING("steam:" SS_TAP(X_ENTER));
       }
       break;
 
     case BLIZZ:
       if (record->event.pressed) {
-        SS_LGUI("r");
-        W(100);
+        SEND_STRING(SS_LGUI("r"));
         SEND_STRING("battlenet:" SS_TAP(X_ENTER));
       }
 
