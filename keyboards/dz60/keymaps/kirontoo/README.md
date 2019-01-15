@@ -133,7 +133,6 @@ These lighting keymaps are all for the RGB underglow.
 | CLC  | Launch Calculator   | STM  | Launch Steam        |
 | BLI  | Launch Blizzard App | VS   | Launch VSCode       |
 | P_M  | PrintScn one monitor|      |                     |
-────┴────┴────┴────────┴────┴──────────┴───┴───┴────┴────┴────┘
 ```
 
 ## RGB Lighting
