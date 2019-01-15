@@ -48,7 +48,7 @@ This is the base layer (layer 0). It is a standard QWERTY layout with a few cust
   ├─────┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬───┴┬──┴───────┤
   │LT    │ A │ S │ D │ F │ G │ H │ J │ K │ L │;: │'"  │ENTER     │  
   ├──────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴────┴┬────┬────┤
-  │LSHIFT  │ Z │ X │ C │ V │ B │ N │ M │,< │.> │RSFT / │UP  │TG  │  
+  │LSHIFT  │ Z │ X │ C │ V │ B │ N │ M │,< │.> │RSFT / │UP  │PS  │  
   ├────┬───┴┬──┴─┬─┴───┴──┬┴───┼───┴───┴──┬┴──┬┴──┬────┼────┼────┤
   │CTRL│WIN │ALT │SPC     │FN1 │BSPC      │FN2│TT │LEFT│DOWN│RGHT│  
   └────┴────┴────┴────────┴────┴──────────┴───┴───┴────┴────┴────┘
@@ -57,7 +57,6 @@ This is the base layer (layer 0). It is a standard QWERTY layout with a few cust
 * The ```PS``` is the print screen key.
 * The ```LT``` key will activate layer ```_FL``` on hold and the ```ESC``` key on tap.
 * The ```RSFT /``` key will activate right shift on hold and ```/``` on tap.
-* The ```TG``` key will toggle the ```_NUMPAD``` layer.
 * The ```FN1``` key will activate layer ```_FL```.
 * The ```FN2``` key will activate layer ```_KL```.
 * The ```TT``` key will activate layer ```_ML``` on hold and toggles the same layer after 3 taps.
@@ -67,7 +66,7 @@ This is the function layer (layer 1). It utilizes function keys, navigations key
 
 ``` 
   ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬────┬─────┬───┐
-  │   │F1 │F2 │F3 │F4 │F5 │F6 │F7 │F8 │F9 │F10│F11│F12 │PAUSE│PS │  
+  │   │F1 │F2 │F3 │F4 │F5 │F6 │F7 │F8 │F9 │F10│F11│F12 │PAUSE│   │  
   ├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴──┬─┴─┬───┴───┤
   │     │   │   │ [ │ ] │ + │PGU│HM │UP │END│   │    │   │       │  
   ├─────┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬───┴┬──┴───────┤
@@ -105,18 +104,18 @@ These lighting keymaps are all for the RGB underglow.
 | S-   | Saturation -        | B-   | Brightness -        |
 | M_T  | RGB Mode Toggle     | B+   | Brightness +        |
 | MSW  | RGB Mode            | MUTE | Mute Audio          |
-| M_X  | RGB Mode            | VOL+ | Volume +            |
-| M_R  | RGB Mode            | VOL- | Volume -            |
-| M_G  | RGB Mode            | PLAY | Play/Pause Music    |
-| M_B  | RGB Mode            | PREV | Previous Song       |
-| M_K  | RGB Mode            | NEXT | Next Song           |
-| M_P  | RGB Mode            |      |                     |
+| M_X  | RGB XMAS            | VOL+ | Volume +            |
+| M_R  | RGB Rainbow         | VOL- | Volume -            |
+| M_G  | RGB Gradient        | PLAY | Play/Pause Music    |
+| M_B  | RGB Breathe         | PREV | Previous Song       |
+| M_K  | RGB Knight Rider    | NEXT | Next Song           |
+| M_P  | RGB Plain (Static)  |      |                     |
 
 ### _KL : Useful Keyboard Shortcuts Layer
 
 ``` 
   ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬────┬────┬────┐
-  │   │   │   │   │   │   │   │   │   │   │SDN│   │    │    │TSK │  
+  │   │   │   │   │   │   │   │   │   │   │SDN│   │    │P_M │TSK │  
   ├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴──┬─┴─┬──┴────┤
   │     │   │   │   │   │   │   │   │   │   │CMD│    │   │       │  
   ├─────┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬───┴┬──┴───────┤
@@ -133,21 +132,8 @@ These lighting keymaps are all for the RGB underglow.
 | LCK  | Lock Screen         | CMD  | Command Prompt      |
 | CLC  | Launch Calculator   | STM  | Launch Steam        |
 | BLI  | Launch Blizzard App | VS   | Launch VSCode       |
-
-
-### _NUMPAD: Number Pad
-``` 
-  ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬────┬─────┬───┐
-  │   │   │   │   │   │   │   │   │   │ / │ * │ - │ +  │     │   │  
-  ├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴──┬─┴─┬───┴───┤
-  │     │   │   │   │   │   │   │   │   │ 7 │ 8 │  9 │EQL│       │  
-  ├─────┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬───┴┬──┴───────┤
-  │LT    │   │   │   │   │   │   │   │   │ 4 │ 5 │ 6  │ ENTER    │  
-  ├──────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴────┴┬────┬────┤
-  │        │   │   │   │   │   │   │   │ 3 │ 2 │   1   │ UP │    │  
-  ├────┬───┴┬──┴─┬─┴───┴──┬┴───┼───┴───┴──┬┴──┬┴──┬────┼────┼────┤
-  │    │    │    │        │FN1 │          │ 0 │ . │LEFT│DOWN│RGHT│  
-  └────┴────┴────┴────────┴────┴──────────┴───┴───┴────┴────┴────┘
+| P_M  | PrintScn one monitor|      |                     |
+────┴────┴────┴────────┴────┴──────────┴───┴───┴────┴────┴────┘
 ```
 
 ## RGB Lighting
