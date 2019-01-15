@@ -6,7 +6,6 @@
 #define _FL 1
 #define _ML 2
 #define _KL 3
-#define _NUMPAD 4
 
 // To make layers more clear
 #define ____ KC_TRNS
@@ -15,8 +14,6 @@
 #define TSK_MNG LCTL(LSFT(KC_ESC))   // ctrl+shift+esc
 #define LCK_SCRN LGUI(KC_L)     // win+L
 #define SHUT_DWN LALT(KC_F4)    // alt+f4
-// #define LBRCK LSFT(KC_LBRC)   // left bracket {
-// #define RBRCK LSFT(KC_RBRC)   // right bracket }
 #define RSFT_Q RSFT_T(KC_SLSH)   // right shift on hold, / on tap
 
 // Custom keycodes
@@ -24,7 +21,8 @@ enum custom_keycodes {
   CMD = SAFE_RANGE,
   VSCODE,
   STEAM,
-  BLIZZ
+  BLIZZ,
+  PSCR_MON
 };
 
 /* LAYOUT_60_b_ansi (maximized DZ60 Plate B layout for ANSI)
@@ -45,47 +43,38 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     // Base Layer - ANSI QWERTY
     [_BL] = LAYOUT_60_b_ansi(
-        KC_GRV,          KC_1,    KC_2,     KC_3,    KC_4,    KC_5,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,           KC_MINS,   KC_EQL,      KC_BSPC,   KC_DEL,
-        KC_TAB,          KC_Q,    KC_W,     KC_E,    KC_R,    KC_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,           KC_LBRC,   KC_RBRC,     KC_BSLS,
-        LT(_FL, KC_ESC), KC_A,    KC_S,     KC_D,    KC_F,    KC_G,     KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,        KC_QUOT,   KC_ENT,
-        KC_LSFT,         KC_Z,    KC_X,     KC_C,    KC_V,    KC_B,     KC_N,     KC_M,     KC_COMM,  KC_DOT,   RSFT_Q,         KC_UP,     TG(_NUMPAD),
+        KC_GRV,          KC_1,    KC_2,     KC_3,    KC_4,    KC_5,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,        KC_MINS,   KC_EQL,      KC_BSPC,   KC_DEL,
+        KC_TAB,          KC_Q,    KC_W,     KC_E,    KC_R,    KC_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,        KC_LBRC,   KC_RBRC,     KC_BSLS,
+        LT(_FL, KC_ESC), KC_A,    KC_S,     KC_D,    KC_F,    KC_G,     KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,     KC_QUOT,   KC_ENT,
+        KC_LSFT,         KC_Z,    KC_X,     KC_C,    KC_V,    KC_B,     KC_N,     KC_M,     KC_COMM,  KC_DOT,   RSFT_Q,      KC_UP,     KC_PSCR,
         KC_LCTL,         KC_LGUI, KC_LALT,  KC_SPC,  MO(_FL), KC_BSPC,  MO(_KL),  TT(_ML),  KC_LEFT,  KC_DOWN,  KC_RIGHT
     ),
 
     // Function Layer - F1-F12 and Commands
     [_FL] = LAYOUT_60_b_ansi(
-      ____,            KC_F1,   KC_F2,    KC_F3,   KC_F4,   KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,           KC_F11,    KC_F12,       KC_PAUS,  KC_PSCR,
-      ____,            ____,    ____,     KC_LBRC, KC_RBRC, KC_PPLS,  KC_PGUP,  KC_HOME,  KC_UP,    KC_END,   ____,             ____,      ____,         ____,
-      ____,            ____,    ____,     KC_LCBR, KC_RCBR, KC_EQL,   KC_PGDN,  KC_LEFT,  KC_DOWN,  KC_RIGHT, ____,             ____,      ____,
-      ____,            ____,    ____,     ____,    ____,    ____,     ____,     ____,     ____,     ____,     KC_INS,           KC_PGUP,   KC_DEL,
+      ____,            KC_F1,   KC_F2,    KC_F3,   KC_F4,   KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,        KC_F11,    KC_F12,       KC_PAUS,  ____,
+      ____,            ____,    ____,     KC_LBRC, KC_RBRC, KC_PPLS,  KC_PGUP,  KC_HOME,  KC_UP,    KC_END,   ____,          ____,      ____,         ____,
+      ____,            ____,    ____,     KC_LCBR, KC_RCBR, KC_EQL,   KC_PGDN,  KC_LEFT,  KC_DOWN,  KC_RIGHT, ____,          ____,      ____,
+      ____,            ____,    ____,     ____,    ____,    ____,     ____,     ____,     ____,     ____,     KC_INS,        KC_PGUP,   KC_DEL,
       ____,            ____,    ____,     ____,    ____,    ____,     ____,     ____,     KC_HOME,  KC_PGDN,  KC_END
     ),
 
     // Media Layer - Lighting and Media Controls
     [_ML] = LAYOUT_60_b_ansi(
-      ____,            RGB_HUI, RGB_HUD,  RGB_SPI, RGB_SAD, RGB_M_T,  ____,     ____,     ____,     ____,     RGB_TOG,          RGB_VAD,   RGB_VAI,      ____,      ____,
-      ____,            ____,    RGB_M_SW, ____,    RGB_M_R, ____,     ____,     ____,     ____,     ____,     RGB_M_P,          RGB_RMOD,  RGB_MOD,      ____,
-      ____,            ____,    RGB_M_SN, ____,    ____,    RGB_M_G,  ____,     ____,     RGB_M_K,  ____,     ____,             ____,      ____,
-      ____,            ____,    RGB_M_X,  ____,    ____,    RGB_M_B,  ____,     ____,     ____,     ____,     KC_MUTE,          KC_VOLU,   KC_MPLY,
+      ____,            RGB_HUI, RGB_HUD,  RGB_SPI, RGB_SAD, RGB_M_T,  ____,     ____,     ____,     ____,     RGB_TOG,       RGB_VAD,   RGB_VAI,      ____,      ____,
+      ____,            ____,    RGB_M_SW, ____,    RGB_M_R, ____,     ____,     ____,     ____,     ____,     RGB_M_P,       RGB_RMOD,  RGB_MOD,      ____,
+      ____,            ____,    RGB_M_SN, ____,    ____,    RGB_M_G,  ____,     ____,     RGB_M_K,  ____,     ____,          ____,      ____,
+      ____,            ____,    RGB_M_X,  ____,    ____,    RGB_M_B,  ____,     ____,     ____,     ____,     KC_MUTE,       KC_VOLU,   KC_MPLY,
       ____,            ____,    ____,     ____,    ____,    ____,     ____,     ____,     KC_MPRV,  KC_VOLD,  KC_MNXT
     ),
 
     // Keyboard Shortcuts Layer - Useful shortcuts
     [_KL] = LAYOUT_60_b_ansi(
-      ____,            ____,    ____,     ____,    ____,    ____,     ____,     ____,     ____,     ____,     SHUT_DWN,         ____,      ____,         ____,      TSK_MNG,
-      ____,            ____,    ____,     ____,    ____,    ____,     ____,     ____,     ____,     ____,     CMD,              ____,      ____,         ____,
-      ____,            ____,    STEAM,    ____,    ____,    ____,     ____,     ____,      ____,    LCK_SCRN, ____,             ____,      ____,
-      ____,            ____,    ____,     KC_CALC, VSCODE,  BLIZZ,    ____,     ____,     ____,     ____,     ____,             ____,      ____,
+      ____,            ____,    ____,     ____,    ____,    ____,     ____,     ____,     ____,     ____,     SHUT_DWN,      ____,      ____,         PSCR_MON,      TSK_MNG,
+      ____,            ____,    ____,     ____,    ____,    ____,     ____,     ____,     ____,     ____,     CMD,           ____,      ____,         ____,
+      ____,            ____,    STEAM,    ____,    ____,    ____,     ____,     ____,      ____,    LCK_SCRN, ____,          ____,      ____,
+      ____,            ____,    ____,     KC_CALC, VSCODE,  BLIZZ,    ____,     ____,     ____,     ____,     ____,          ____,      ____,
       ____,            ____,    ____,     ____,    ____,    ____,     ____,     ____,     ____,     ____,     ____
-    ),
-
-    // NUMPAD Layer
-    [_NUMPAD] = LAYOUT_60_b_ansi(
-      KC_NO,           KC_NO,   KC_NO,    KC_NO,   KC_NO,   KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_PSLS,  KC_PAST,          KC_PMNS,   KC_PPLS,      KC_BSPC,   KC_NO,
-      KC_NO,           KC_NO,   KC_NO,    KC_NO,   KC_NO,   KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_7,     KC_8,             KC_9,      KC_PEQL,      KC_NO,
-      KC_NO,           KC_NO,   KC_NO,    KC_NO,   KC_NO,   KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_4,     KC_5,             KC_6,     KC_PENT,
-      KC_NO,           KC_NO,   KC_NO,    KC_NO,   KC_NO,   KC_NO,    KC_NO,    KC_NO,    KC_1,     KC_2,     KC_3,             KC_UP,     ____,
-      KC_NO,           KC_NO,   KC_NO,    ____,    ____,     ____,    KC_0,     KC_PDOT,  KC_LEFT,  KC_DOWN,  KC_RIGHT
     )
 };
 
@@ -108,7 +97,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       break;
 
-    // Open steam
+    // Open Steam
     case STEAM:
       if (record->event.pressed) {
         SEND_STRING(SS_LGUI("r"));
@@ -116,11 +105,20 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       break;
 
+    // Open Blizzard Launcher
     case BLIZZ:
       if (record->event.pressed) {
         SEND_STRING(SS_LGUI("r"));
         SEND_STRING("battlenet:" SS_TAP(X_ENTER));
       }
+      break;
+
+    // Save screenshot of one monitor
+    case PSCR_MON:
+      if (record->event.pressed) {
+        SEND_STRING(SS_DOWN(X_LCTRL) SS_DOWN(X_LALT) SS_TAP(X_PSCREEN) SS_UP(X_LCTRL) SS_UP(X_LALT));
+      }
+      break;
 
     default:
       return true;
