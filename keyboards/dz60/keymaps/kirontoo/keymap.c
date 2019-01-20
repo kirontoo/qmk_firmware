@@ -2,10 +2,12 @@
 #include QMK_KEYBOARD_H
 
 // Layer definition
-#define _BL 0
-#define _FL 1
-#define _ML 2
-#define _KL 3
+#define _QWERTY 0
+#define _COLEMAK 1
+#define _FL 2
+#define _FN 3
+#define _ML 4
+#define _KL 5
 
 // To make layers more clear
 #define ____ KC_TRNS
@@ -22,7 +24,9 @@ enum custom_keycodes {
   VSCODE,
   STEAM,
   BLIZZ,
-  PSCR_MON
+  PSCR_MON,
+  COLEMAK,
+  QWERTY
 };
 
 /* LAYOUT_60_b_ansi (maximized DZ60 Plate B layout for ANSI)
@@ -42,20 +46,37 @@ enum custom_keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     // Base Layer - ANSI QWERTY
-    [_BL] = LAYOUT_60_b_ansi(
+    [_QWERTY] = LAYOUT_60_b_ansi(
         KC_GRV,          KC_1,    KC_2,     KC_3,    KC_4,    KC_5,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,        KC_MINS,   KC_EQL,      KC_BSPC,   KC_DEL,
         KC_TAB,          KC_Q,    KC_W,     KC_E,    KC_R,    KC_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,        KC_LBRC,   KC_RBRC,     KC_BSLS,
         LT(_FL, KC_ESC), KC_A,    KC_S,     KC_D,    KC_F,    KC_G,     KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,     KC_QUOT,   KC_ENT,
         KC_LSFT,         KC_Z,    KC_X,     KC_C,    KC_V,    KC_B,     KC_N,     KC_M,     KC_COMM,  KC_DOT,   RSFT_Q,      KC_UP,     KC_PSCR,
-        KC_LCTL,         KC_LGUI, KC_LALT,  KC_SPC,  MO(_FL), KC_BSPC,  MO(_KL),  TT(_ML),  KC_LEFT,  KC_DOWN,  KC_RIGHT
+        KC_LCTL,         KC_LGUI, KC_LALT,  KC_SPC,  MO(_FN), KC_BSPC,  MO(_KL),  TT(_ML),  KC_LEFT,  KC_DOWN,  KC_RIGHT
     ),
 
-    // Function Layer - F1-F12 and Commands
+    [_COLEMAK] = LAYOUT_60_b_ansi(
+        KC_GRV,          KC_1,    KC_2,     KC_3,    KC_4,    KC_5,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,        KC_MINS,   KC_EQL,      KC_BSPC,   KC_DEL,
+        KC_TAB,          KC_Q,    KC_W,     KC_F,    KC_P,    KC_G,     KC_J,     KC_L,     KC_U,     KC_Y,     KC_SCLN,     KC_LBRC,   KC_RBRC,     KC_BSLS,
+        LT(_FL, KC_ESC), KC_A,    KC_R,     KC_S,    KC_T,    KC_D,     KC_H,     KC_N,     KC_E,     KC_I,     KC_O,        KC_QUOT,   KC_ENT,
+        KC_LSFT,         KC_Z,    KC_X,     KC_C,    KC_V,    KC_B,     KC_K,     KC_M,     KC_COMM,  KC_DOT,   RSFT_Q,      KC_UP,     KC_PSCR,
+        KC_LCTL,         KC_LGUI, KC_LALT,  KC_SPC,  MO(_FN), KC_BSPC,  MO(_KL),  TT(_ML),  KC_LEFT,  KC_DOWN,  KC_RIGHT
+    ),
+
+    // Function Layer - Custom binds
     [_FL] = LAYOUT_60_b_ansi(
       ____,            KC_F1,   KC_F2,    KC_F3,   KC_F4,   KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,        KC_F11,    KC_F12,       KC_PAUS,  ____,
-      ____,            ____,    ____,     KC_LBRC, KC_RBRC, KC_PPLS,  KC_PGUP,  KC_HOME,  KC_UP,    KC_END,   ____,          ____,      ____,         ____,
-      ____,            ____,    ____,     KC_LCBR, KC_RCBR, KC_EQL,   KC_PGDN,  KC_LEFT,  KC_DOWN,  KC_RIGHT, ____,          ____,      ____,
+      ____,            ____,    ____,     KC_EQL,  KC_PLUS, ____,     ____,     KC_MINS,  KC_UNDS,  ____,     ____,          ____,      ____,         ____,
+      ____,            ____,    ____,     KC_LCBR, KC_RCBR, ____,     ____,     KC_RBRC,  KC_LBRC,  ____,     ____,          ____,      ____,
       ____,            ____,    ____,     ____,    ____,    ____,     ____,     ____,     ____,     ____,     KC_INS,        KC_PGUP,   KC_DEL,
+      ____,            ____,    ____,     ____,    ____,    ____,     ____,     ____,     KC_HOME,  KC_PGDN,  KC_END
+    ),
+
+    // F1-F12
+    [_FN] = LAYOUT_60_b_ansi(
+      ____,            QWERTY,  COLEMAK,  ____,    ____,    ____,     ____,     ____,     ____,     ____,     ____,          ____,      ____,         ____,      ____,
+      ____,            KC_F1,   KC_F2,    KC_F3,   KC_F4,   ____,     KC_PGUP,  KC_HOME,  KC_UP,    KC_END,   ____,          ____,      ____,         ____,
+      ____,            KC_F5,   KC_F6,    KC_F7,   KC_F8,   ____,     KC_PGDN,  KC_LEFT,  KC_DOWN,  KC_RIGHT, ____,          ____,      ____,
+      ____,            KC_F9,   KC_F10,   KC_F11,  KC_F12,  ____,     ____,     ____,     ____,     ____,     KC_INS,        KC_PGUP,   KC_DEL,
       ____,            ____,    ____,     ____,    ____,    ____,     ____,     ____,     KC_HOME,  KC_PGDN,  KC_END
     ),
 
@@ -76,8 +97,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       ____,            ____,    ____,     KC_CALC, VSCODE,  BLIZZ,    ____,     ____,     ____,     ____,     ____,          ____,      ____,
       ____,            ____,    ____,     ____,    ____,    ____,     ____,     ____,     ____,     ____,     ____
     )
+
 };
 
+// set a persistant default layer
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch(keycode) {
 
@@ -116,9 +139,25 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     // Save screenshot of one monitor
     case PSCR_MON:
       if (record->event.pressed) {
-        SEND_STRING(SS_DOWN(X_LCTRL) SS_DOWN(X_LALT) SS_TAP(X_PSCREEN) SS_UP(X_LCTRL) SS_UP(X_LALT));
+        SEND_STRING(SS_DOWN(X_LALT) SS_TAP(X_PSCREEN) SS_UP(X_LALT));
       }
       break;
+
+    case COLEMAK:
+        if (record->event.pressed) {
+            set_single_persistent_default_layer(_COLEMAK);
+        }
+
+        return false;
+        break;
+
+    case QWERTY:
+        if (record->event.pressed) {
+            set_single_persistent_default_layer(_QWERTY);
+        }
+
+        return false;
+        break;
 
     default:
       return true;
