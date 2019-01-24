@@ -34,10 +34,10 @@ To build this keymap, simply run ```make dz60:kirontoo```
 
 
 ## Layers
-This keymap has 5 different layers.
+This keymap has 6 different layers.
 
 
-### _BL : Base Layer
+### _QWERTY : QWERTY LAYOUT
 This is the base layer (layer 0). It is a standard QWERTY layout with a few custom keycodes.
 
 ``` 
@@ -48,31 +48,64 @@ This is the base layer (layer 0). It is a standard QWERTY layout with a few cust
   ├─────┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬───┴┬──┴───────┤
   │LT    │ A │ S │ D │ F │ G │ H │ J │ K │ L │;: │'"  │ENTER     │  
   ├──────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴────┴┬────┬────┤
-  │LSHIFT  │ Z │ X │ C │ V │ B │ N │ M │,< │.> │RSFT / │UP  │PS  │  
+  │LSHIFT  │ Z │ X │ C │ V │ B │ N │ M │,< │.> │RSFT / │UP  │TG  │  
   ├────┬───┴┬──┴─┬─┴───┴──┬┴───┼───┴───┴──┬┴──┬┴──┬────┼────┼────┤
   │CTRL│WIN │ALT │SPC     │FN1 │BSPC      │FN2│TT │LEFT│DOWN│RGHT│  
   └────┴────┴────┴────────┴────┴──────────┴───┴───┴────┴────┴────┘
 ```
 
 * The ```PS``` is the print screen key.
-* The ```LT``` key will activate layer ```_FL``` on hold and the ```ESC``` key on tap.
+* The ```LT``` key will activate layer ```_FN``` on hold and the ```ESC``` key on tap.
 * The ```RSFT /``` key will activate right shift on hold and ```/``` on tap.
 * The ```FN1``` key will activate layer ```_FL```.
 * The ```FN2``` key will activate layer ```_KL```.
 * The ```TT``` key will activate layer ```_ML``` on hold and toggles the same layer after 3 taps.
+* The ```TG``` key will toggle layer ```_COLEMAK```
 
-### _FL : Function Layer
-This is the function layer (layer 1). It utilizes function keys, navigations keys, and a few symbols.
+### _COLEMAK : COLEMAK LAYOUT
+This is the base layer (layer 0). It is a standard QWERTY layout with a few custom keycodes.
+
+``` 
+  ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬────┬─────┬───┐
+  │`~ │ 1 │ 2 │ 3 │ 4 │ 5 │ 6 │ 7 │ 8 │ 9 │ 0 │-_ │=+  │BSPC │DEL│  
+  ├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴──┬─┴─┬───┴───┤
+  │TAB  │ Q │ W │ F │ P │ G │ J │ L │ U │ Y │ : │[{  │]} │\|     │  
+  ├─────┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬───┴┬──┴───────┤
+  │LT    │ A │ R │ S │ T │ D │ H │ N │ E │ I │ Y │'"  │ENTER     │  
+  ├──────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴────┴┬────┬────┤
+  │LSHIFT  │ Z │ X │ C │ V │ B │ K │ M │,< │.> │RSFT / │UP  │TG  │  
+  ├────┬───┴┬──┴─┬─┴───┴──┬┴───┼───┴───┴──┬┴──┬┴──┬────┼────┼────┤
+  │CTRL│WIN │ALT │SPC     │FN1 │BSPC      │FN2│TT │LEFT│DOWN│RGHT│  
+  └────┴────┴────┴────────┴────┴──────────┴───┴───┴────┴────┴────┘
+```
+
+### _FL : Utilizes a few symbols.
 
 ``` 
   ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬────┬─────┬───┐
   │   │F1 │F2 │F3 │F4 │F5 │F6 │F7 │F8 │F9 │F10│F11│F12 │PAUSE│   │  
   ├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴──┬─┴─┬───┴───┤
-  │     │   │   │ [ │ ] │ + │PGU│HM │UP │END│   │    │   │       │  
+  │     │   │   │ = │ + │   │   │ - │ _ │   │   │    │   │       │  
   ├─────┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬───┴┬──┴───────┤
-  │LT    │   │   │ { │ } │ = │PGD│LFT│DWN│RGT│   │    │ENTER     │  
+  │LT    │   │   │ { │ } │ & │ | │ [ │ ] │   │   │    │ENTER     │  
   ├──────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴────┴┬────┬────┤
   │        │   │   │   │   │   │   │   │   │   │INSERT │PGUP│DEL │  
+  ├────┬───┴┬──┴─┬─┴───┴──┬┴───┼───┴───┴──┬┴──┬┴──┬────┼────┼────┤
+  │    │    │    │        │FN1 │          │FN2│TT │HOME│PGDN│END │  
+  └────┴────┴────┴────────┴────┴──────────┴───┴───┴────┴────┴────┘
+```
+
+### _FN : F1-F12 and navigation
+
+``` 
+  ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬────┬─────┬───┐
+  │   │F1 │F2 │F3 │F4 │F5 │F6 │F7 │F8 │F9 │F10│F11│F12 │PAUSE│   │  
+  ├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴──┬─┴─┬───┴───┤
+  │     │F1 │F2 │F3 │F4 │   │PGU│HM │UP │END│   │    │   │       │  
+  ├─────┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬───┴┬──┴───────┤
+  │LT    │F5 │F6 │F7 │F8 │   │PGD│LFT│DWN│RGT│   │    │ENTER     │  
+  ├──────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴────┴┬────┬────┤
+  │        │F9 │F10│F11│F12│   │   │   │   │   │INSERT │PGUP│DEL │  
   ├────┬───┴┬──┴─┬─┴───┴──┬┴───┼───┴───┴──┬┴──┬┴──┬────┼────┼────┤
   │    │    │    │        │FN1 │          │FN2│TT │HOME│PGDN│END │  
   └────┴────┴────┴────────┴────┴──────────┴───┴───┴────┴────┴────┘
@@ -115,13 +148,13 @@ These lighting keymaps are all for the RGB underglow.
 
 ``` 
   ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬────┬────┬────┐
-  │   │   │   │   │   │   │   │   │   │   │SDN│   │    │P_M │TSK │  
+  │   │   │   │   │   │   │   │   │   │   │SDN│   │    │    │TSK │  
   ├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴──┬─┴─┬──┴────┤
   │     │   │   │   │   │   │   │   │   │   │CMD│    │   │       │  
   ├─────┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬───┴┬──┴───────┤
   │LT    │   │STM│   │   │   │   │   │   │LCK│   │    │          │  
   ├──────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴────┴┬────┬────┤
-  │        │   │   │CLC│VS │BLI│   │   │   │   │       │    │    │  
+  │        │   │   │CLC│VS │BLI│   │   │   │   │       │    │P_M │  
   ├────┬───┴┬──┴─┬─┴───┴──┬┴───┼───┴───┴──┬┴──┬┴──┬────┼────┼────┤
   │    │    │    │        │FN1 │          │FN2│TT │    │    │    │  
   └────┴────┴────┴────────┴────┴──────────┴───┴───┴────┴────┴────┘
