@@ -11,9 +11,6 @@
 #define PRODUCT         DZ60
 #define DESCRIPTION     DZ60 Keyboard
 
-// Number of TAPs to toggle layer
-#define TAPPING_TOGGLE 3
-
 // RGB Settings
 #define RGBLIGHT_HUE_STEP 8
 #define RGBLIGHT_SAT_STEP 8
