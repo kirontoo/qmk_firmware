@@ -1,4 +1,3 @@
-
 #include QMK_KEYBOARD_H
 
 #define _QWERTY 0
@@ -12,18 +11,16 @@
 #define FN1 MO(_FN1)
 #define FN2 MO(_FN2)
 #define SP_LWR LT(_LOWER, KC_SPACE)
-#define SP_FN2 LT(_FN2, KC_SPACE)
 #define BS_RAS LT(_RAISE, KC_BSPC)
-#define BS_FN2 LT(_FN2, KC_BSPC)
 #define TSK_MNG LCTL(LSFT(KC_ESC))   // ctrl+shift+esc
 #define LCK_SCRN LGUI(KC_L)     // win+L
-#define SHUT_DWN LALT(KC_F4) 
 
 enum custom_keycodes {
                       COLEMAK = SAFE_RANGE,
                       QWERTY,
                       PSRCN,
-                      DSKTOP
+                      DSKTOP,
+                      EXT_APP
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -36,9 +33,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [_QWERTY] = LAYOUT(
-                     KC_TAB,   KC_Q,     KC_W,     KC_F,     KC_P,     KC_G,     KC_J,     KC_L,     KC_U,     KC_Y,     KC_SCLN,     KC_LBRC,  KC_RBRC,
+    KC_TAB,   KC_Q,     KC_W,     KC_F,     KC_P,     KC_G,     KC_J,     KC_L,     KC_U,     KC_Y,     KC_SCLN,     KC_LBRC,  KC_RBRC,
     KC_ESC,   KC_A,     KC_R,     KC_S,     KC_T,     KC_D,     KC_H,     KC_N,     KC_E,     KC_I,     KC_O,  KC_ENT,
-    KC_LSFT,  KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_K,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,  KC_RSFT,    KC_LCTL,  KC_LALT,  KC_LGUI,  FN1,      SP_LWR,   BS_RAS,   KC_RGUI,  KC_RALT,  FN2,      KC_RCTL
+    KC_LSFT,  KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_K,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,  KC_RSFT,
+    KC_LCTL,  KC_LALT,  KC_LGUI,  FN1,      SP_LWR,   BS_RAS,   KC_RGUI,  KC_RALT,  FN2,      KC_RCTL
   ),
 
 
@@ -57,7 +55,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [_FN1] = LAYOUT(
-    PSCRN,  KC_F1,  KC_F2,    KC_F3,  KC_F4,   _______,  _______,  _______,  _______,  _______,  _______,  _______,  QWERTY,
+    PSCRN,  KC_F1,  KC_F2,    KC_F3,  EXT_APP,   _______,  _______,  _______,  _______,  _______,  _______,  _______,  QWERTY,
     TSK_MNG,  KC_F5,  KC_F6,    KC_F7,  KC_F8,   _______,  _______,  _______,  _______,  _______,  _______,  COLEMAK,
     DSKTOP,  KC_F9,  KC_10,    KC_F11, KC_12,   _______,  _______,  _______,  _______,  _______,  KC_MUTE,  KC_MPLY,
     LCK_SCRN,  _______,  _______,  _______,  _______,   _______, KC_MPRV,  KC_VOLD,  KC_VOLU,  KC_MNXT
@@ -92,6 +90,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case DSKTOP:
     if (record->event.pressed) {
       SEND_STRING(SS_DOWN(X_LGUI) SS_TAP(X_D) SS_UP(X_LGUI));
+    }
+    break;
+
+  case EXT_APP:
+    if (record->event.pressed) {
+      ACTION_TAP_DANCE_DOUBLE(KC_F4, LALT(KC_F4));
     }
     break;
 
