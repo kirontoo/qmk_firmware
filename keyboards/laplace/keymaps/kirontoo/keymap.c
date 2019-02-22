@@ -5,7 +5,7 @@
 #define _COLEMAK 1
 #define _LOWER 2
 #define _RAISE 3
-#define _FN1
+#define _FN1 4
 
 #define _______ KC_TRNS
 #define XXXXXXX KC_NO
@@ -32,7 +32,7 @@ enum {
 
 qk_tap_dance_action_t tap_dance_actions[] = {
   // tap once for F4, twice for ALT+F4
-  [TD_F4] = ACTION_TAP_DANCE_DOUBLE(KC_F4, LALT(KC_F4));
+  [TD_F4] = ACTION_TAP_DANCE_DOUBLE(KC_F4, LALT(KC_F4))
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -69,7 +69,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_FN1] = LAYOUT(
     PSCRN,     KC_F1,    KC_F2,    KC_F3,    TD(TD_F4), _______,  _______,  _______,  _______,  _______,  _______,  _______,  QWERTY,
     TSK_MNG,   KC_F5,    KC_F6,    KC_F7,    KC_F8,     _______,  _______,  _______,  _______,  _______,  _______,  COLEMAK,
-    DSKTOP,    KC_F9,    KC_10,    KC_F11,   KC_12,     _______,  _______,  _______,  _______,  _______,  KC_MUTE,  KC_MPLY,
+    DSKTOP,    KC_F9,    KC_F10,   KC_F11,   KC_F12,     _______,  _______,  _______,  _______,  _______,  KC_MUTE,  KC_MPLY,
     LCK_SCRN,  _______,  _______,  _______,  _______,   _______,  KC_MPRV,  KC_VOLD,  KC_VOLU,  KC_MNXT
 )
 };
