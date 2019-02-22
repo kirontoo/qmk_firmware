@@ -25,16 +25,19 @@ enum custom_keycodes {
   QWERTY
 };
 
-// Tap Dance
-enum {
-  TD_F4 = 0
-};
+// Tap Dance define
+#ifdef TAP_DANCE_ENABLE
+#define EXT_APP TD(0)
+#endif
 
+#ifdef TAP_DANCE_ENABLE
 qk_tap_dance_action_t tap_dance_actions[] = {
   // tap once for F4, twice for ALT+F4
-  [TD_F4] = ACTION_TAP_DANCE_DOUBLE(KC_F4, LALT(KC_F4))
+  [0] = ACTION_TAP_DANCE_DOUBLE(KC_F4, LALT(KC_F4))
 };
+#endif
 
+// TODO: keyboard needs a reset button. Add FN2 layer of ADJUST Layer
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_QWERTY] = LAYOUT(
@@ -67,10 +70,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [_FN1] = LAYOUT(
-    PSCRN,     KC_F1,    KC_F2,    KC_F3,    TD(TD_F4), _______,  _______,  _______,  _______,  _______,  _______,  _______,  QWERTY,
-    TSK_MNG,   KC_F5,    KC_F6,    KC_F7,    KC_F8,     _______,  _______,  _______,  _______,  _______,  _______,  COLEMAK,
-    DSKTOP,    KC_F9,    KC_F10,   KC_F11,   KC_F12,     _______,  _______,  _______,  _______,  _______,  KC_MUTE,  KC_MPLY,
-    LCK_SCRN,  _______,  _______,  _______,  _______,   _______,  KC_MPRV,  KC_VOLD,  KC_VOLU,  KC_MNXT
+    PSCRN,     KC_F1,    KC_F2,    KC_F3,    EXT_APP, _______,  _______,  _______,  _______,  _______,  _______,  _______,  QWERTY,
+    TSK_MNG,   KC_F5,    KC_F6,    KC_F7,    KC_F8,   _______,  _______,  _______,  _______,  _______,  _______,  COLEMAK,
+    DSKTOP,    KC_F9,    KC_F10,   KC_F11,   KC_F12,  _______,  _______,  _______,  _______,  _______,  KC_MUTE,  KC_MPLY,
+    LCK_SCRN,  _______,  _______,  _______,  _______, _______,  KC_MPRV,  KC_VOLD,  KC_VOLU,  KC_MNXT
 )
 };
 
