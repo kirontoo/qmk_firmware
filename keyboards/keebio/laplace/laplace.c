@@ -2,8 +2,8 @@
 
 void matrix_init_kb(void) {
   // Turn status LED on
-  setPinOutput(C13);
-  writePinHigh(C13);
+  //setPinOutput(C13);
+  // fswritePinHigh(C13);
 
   matrix_init_user();
 }
