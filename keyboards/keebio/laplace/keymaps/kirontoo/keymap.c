@@ -3,10 +3,11 @@
 // Layers
 #define _QWERTY 0
 #define _COLEMAK 1
-#define _LOWER 2
-#define _RAISE 3
-#define _FN1 4
-#define _FN2 5
+#define _GAMEMODE 2
+#define _LOWER 3
+#define _RAISE 4
+#define _FN1 5
+#define _FN2 6
 
 #define _______ KC_TRNS
 #define XXXXXXX KC_NO
@@ -15,6 +16,7 @@
 #define FN2 LT(_FN2, KC_LEFT)
 #define SP_LWR LT(_LOWER, KC_SPACE)
 #define BS_RAS LT(_RAISE, KC_BSPC)
+#define BS_LWR LT(_LOWER, KC_BSPC)
 
 // shortcuts
 #define TSK_MNG LCTL(LSFT(KC_ESC))
@@ -29,7 +31,8 @@
 
 enum custom_keycodes {
   COLEMAK = SAFE_RANGE,
-  QWERTY
+  QWERTY,
+  GAMEMODE
 };
 
 // Tap Dance define
@@ -60,12 +63,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_LCTL,  KC_LGUI,  FN1,      KC_LALT,  SP_LWR,   BS_RAS,   FN2,      ALT_TAP,  GUI_TAP,  CTRL_TAP
   ),
 
+  [_GAMEMODE] = LAYOUT(
+    KC_TAB,   KC_Q,     KC_W,     KC_F,     KC_P,     KC_G,     KC_J,     KC_L,     KC_U,     KC_Y,     KC_SCLN,  KC_LBRC,  KC_RBRC,
+    KC_ESC,   KC_A,     KC_R,     KC_S,     KC_T,     KC_D,     KC_H,     KC_N,     KC_E,     KC_I,     KC_O,     KC_ENT,
+    KC_LSFT,  KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_K,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,  KC_RSFT,
+    KC_LCTL,  KC_LGUI,  FN1,      KC_LALT,  KC_SPACE, BS_LWR,   FN2,      ALT_TAP,  GUI_TAP,  CTRL_TAP
+  ),
 
   [_LOWER] = LAYOUT(
     KC_GRV,   KC_1,     KC_2,     KC_3,     KC_4,     KC_5,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     KC_MINS,  KC_EQL,
     _______,  KC_MINS,  KC_EQL,   KC_LCBR,  KC_RCBR,  KC_BSLS,  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RIGHT, KC_QUOT,  KC_QUOT,
     _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,
-    _______,  _______,  _______,  _______,  _______,  _______,   _______, _______,  _______,  _______
+    _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______
   ),
 
   [_RAISE] = LAYOUT(
@@ -104,6 +113,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case COLEMAK:
     if (record->event.pressed) {
       set_single_persistent_default_layer(_COLEMAK);
+    }
+    return false;
+    break;
+
+  case GAMEMODE:
+    if (record->event.pressed) {
+      set_single_persestent_default_layer(_GAMEMODE);
     }
 
     return false;
