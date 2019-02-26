@@ -28,7 +28,7 @@
 #define PERMISSIVE_HOLD
 
 /* Configure mousekey behavior */
-#define MOUSEKEY_DELAY             300
+#define MOUSEKEY_DELAY             100
 #define MOUSEKEY_INTERVAL          50
 #define MOUSEKEY_MAX_SPEED         10
 #define MOUSEKEY_TIME_TO_MAX       20
