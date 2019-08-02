@@ -68,7 +68,7 @@ float overwatch_theme[][2] = SONG(OVERWATCH_THEME);
 
 
 // One Shot Layers and Mods
-#supefine OSL_LWR OSL(_LOWER)
+#define OSL_LWR OSL(_LOWER)
 #define OSL_RAS OSL(_RAISE)
 #define OSM_LST OSM(MOD_LSFT)
 #define OSM_RST OSM(MOD_RSFT)
@@ -155,8 +155,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_LOWER] = LAYOUT_planck_grid(
     KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_GRV,
     KC_TAB,  _______, _______, KC_MINS, KC_EQL,  KC_BSLS, KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_BSLS, KC_QUOT,
-    KC_LPRN, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_RPRN,
-    KC_LCBR, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_RCBR
+    KC_LCBR, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_RCBR,
+    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
 ),
 
 /* Adjust (Lower + Raise)
@@ -260,7 +260,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
       break;
-    
+
     case ENC_ALT:
       if (record->event.pressed) {
         (ag_swap) ? register_code(KC_LALT) : register_code(KC_LGUI);
@@ -271,7 +271,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
       break;
-    
+
     case ENC_GUI:
       if (record->event.pressed) {
         (ag_swap) ? register_code(KC_LGUI) : register_code(KC_LALT);
@@ -295,38 +295,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       break;
   }
   return true;
-}
-
-bool muse_mode = false;
-uint8_t last_muse_note = 0;
-uint16_t muse_counter = 0;
-uint8_t muse_offset = 70;
-uint16_t muse_tempo = 50;
-
-void matrix_scan_user(void) {
-  #ifdef AUDIO_ENABLE
-    if (muse_mode) {
-      if (muse_counter == 0) {
-        uint8_t muse_note = muse_offset + SCALE[muse_clock_pulse()];
-        if (muse_note != last_muse_note) {
-          stop_note(compute_freq_for_midi_note(last_muse_note));
-          play_note(compute_freq_for_midi_note(muse_note), 0xF);
-          last_muse_note = muse_note;
-        }
-      }
-      muse_counter = (muse_counter + 1) % muse_tempo;
-    }
-  #endif
-}
-
-bool music_mask_user(uint16_t keycode) {
-  switch (keycode) {
-    case RAISE:
-    case LOWER:
-      return false;
-    default:
-      return true;
-  }
 }
 
 
