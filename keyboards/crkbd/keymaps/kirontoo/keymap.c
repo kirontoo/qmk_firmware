@@ -22,31 +22,40 @@ extern uint8_t is_master;
 // Layer names don't all need to be of the same length, obviously, and you can also skip them
 // entirely and just use numbers.
 #define _COLEMAK 0
-#define _LOWER 3
+#define _LOWER 2
 #define _RAISE 4
-#define _ADJUST 16
+#define _GAME 1
 
 enum custom_keycodes {
   COLEMAK = SAFE_RANGE,
   LOWER,
   RAISE,
-  ADJUST,
-  TD_EXT
+  GAME,
+  TD_EXT,
+  NEQL,
+  LEQL,
+  GEQL
 };
 
 #define KC______ KC_TRNS
 #define KC_XXXXX KC_NO
 #define KC_LOWER LOWER
 #define KC_RAISE RAISE
+#define KC_NEQL NEQL
+#define KC_GEQL GEQL
+#define KC_LEQL LEQL
 //#define KC_RST   RESET
 
 #define KC_CTLTB CTL_T(KC_TAB)
 #define KC_CTLEC CTL_T(KC_ESC)
+#define KC_ALTEC ALT_T(KC_ESC)
 
 #define KC_LWR OSL(_LOWER)
 #define KC_RAS OSL(_RAISE)
 #define KC_LST OSM(MOD_LSFT)
 #define KC_RST OSM(MOD_RSFT)
+#define KC_GAME DF(_GAME)
+#define KC_CLMK DF(_COLEMAK)
 
 //shortcuts
 #define KC_LKSCN LGUI(KC_L)
@@ -80,39 +89,39 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                               //`--------------------'  `--------------------'
   ),
 
+
   [_LOWER] = LAYOUT_kc( \
   //,-----------------------------------------.                ,-----------------------------------------.
-        TAB,     1,     2,     3,     4,     5,                      6,     7,     8,     9,     0,   GRV,\
+        TAB,  EXLM,    AT,  HASH,   DLR,  PERC,                   CIRC,  AMPR,  ASTR,  LPRN,  RPRN,  UNDS,\
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
-      CTLEC, XXXXX, XXXXX,  MINS,  EQL,   BSLS,                   HOME,  PGDN,  PGUP,   END,  BSLS,  QUOT,\
+      CTLEC,     1,     2,     3,     4,     5,                   EQL,   LEQL,  NEQL,  GEQL,  PIPE,  QUOT,\
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
-       LCBR,  UNDO,   CUT,  COPY, PASTE, XXXXX,                  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,  RCBR,\
+       LCBR,     6,     7,     8,     9,     0,                   PLUS,  MINS,  LABK,  RABK,  BSLS,  RCBR,\
   //|------+------+------+------+------+------+------|  |------+------+------+------+------+------+------|
-                                  PSCRN,   LWR,   SPC,     BSPC,   RAS,  DESKT \
+                                  PSCRN,   LWR,   SPC,     BSPC,   RAS,  TSKMG \
                               //`--------------------'  `--------------------'
   ),
-
   [_RAISE] = LAYOUT_kc( \
   //,-----------------------------------------.                ,-----------------------------------------.
-        TAB,  EXLM,    AT,  HASH,   DLR,  PERC,                   CIRC,  AMPR,  ASTR,  LPRN,  RPRN,  TILD,\
+        TAB,    F1,    F2,    F3,   EXT, XXXXX,                   GAME, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,\
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
-      CTLEC, XXXXX, XXXXX,  UNDS,  PLUS,  PIPE,                   LEFT,  DOWN,    UP, RIGHT,  PIPE,   DQT,\
+      CTLEC,    F5,    F6,    F7,    F8, XXXXX,                   LEFT,  DOWN,    UP, RIGHT,  PIPE,   DQT,\
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
-       LBRC, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,                   MPLY,  MPRV,  VOLU,  VOLD,  MNXT,  RBRC,\
+       LBRC,    F9,   F10,    F11,  F12, XXXXX,                   MPLY,  VOLD,  VOLU,  MPRV,  MNXT,  RBRC,\
   //|------+------+------+------+------+------+------|  |------+------+------+------+------+------+------|
-                                   SNIP,   LWR,   SPC,     BSPC,   RAS,  TSKMG \
+                                   SNIP,   LWR,   SPC,     BSPC,   RAS,  XXXXX \
                               //`--------------------'  `--------------------'
   ),
 
-  [_ADJUST] = LAYOUT_kc( \
-  //,-----------------------------------------.                ,-----------------------------------------.
-      XXXXX,    F1,    F2,    F3,   EXT, XXXXX,                  XXXXX, DESKT, XXXXX, XXXXX, XXXXX, XXXXX,\
+  [_GAME] = LAYOUT_kc( \
+  //,-----------------------------------------.                ,-----------------------------------------.3
+        TAB,     Q,     W,     E,     R,     T,                      Y,     U,     I,     O,     P,  CLMK,\
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
-      XXXXX,    F5,    F6,    F7,    F8, XXXXX,                  XXXXX, LKSCN, XXXXX, XXXXX, XXXXX, XXXXX,\
+      ALTEC,     A,     S,     D,     F,     G,                      H,     J,     K,     L, XXXXX,   ENT,\
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
-      XXXXX,    F9,   F10,    F11,  F12, XXXXX,                  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,\
+       LSFT,     Z,     X,     C,     V,     B,                      N,     M, XXXXX, XXXXX, XXXXX, XXXXX,\
   //|------+------+------+------+------+------+------|  |------+------+------+------+------+------+------|
-                                    LALT,  LWR,   SPC,     BSPC,   RAS,   LGUI \
+                                    LCTL,  LWR,   SPC,     BSPC,   RAS,   LGUI \
                               //`--------------------'  `--------------------'
   )
 };
@@ -124,24 +133,6 @@ void persistent_default_layer_set(uint16_t default_layer) {
   default_layer_set(default_layer);
 }
 
-// Setting ADJUST layer RGB back to default
-void update_tri_layer_RGB(uint8_t layer1, uint8_t layer2, uint8_t layer3) {
-  if (IS_LAYER_ON(layer1) && IS_LAYER_ON(layer2)) {
-    layer_on(layer3);
-  } else {
-    layer_off(layer3);
-  }
-}
-
-void matrix_init_user(void) {
-    #ifdef RGBLIGHT_ENABLE
-      RGB_current_mode = rgblight_config.mode;
-    #endif
-    //SSD1306 OLED init, make sure to add #define SSD1306OLED in config.h
-    #ifdef SSD1306OLED
-        iota_gfx_init(!has_usb());   // turns on the display
-    #endif
-}
 
 //SSD1306 OLED update loop, make sure to add #define SSD1306OLED in config.h
 #ifdef SSD1306OLED
@@ -158,6 +149,34 @@ const char *read_keylogs(void);
 // void set_timelog(void);
 // const char *read_timelog(void);
 
+
+char layer_state_str[24];
+
+const char *write_layer_state(void) {
+  switch (biton32(layer_state))
+  {
+
+  return layer_state_str;
+  case _COLEMAK:
+    snprintf(layer_state_str, sizeof(layer_state_str), "       COLEMAK");
+    break;
+
+  case _LOWER:
+    snprintf(layer_state_str, sizeof(layer_state_str), "       CODE");
+    break;
+  case _RAISE:
+    snprintf(layer_state_str, sizeof(layer_state_str), "       FUNCTION");
+    break;
+  case _GAME:
+    snprintf(layer_state_str, sizeof(layer_state_str), "       GAME");
+    break;
+  default:
+    snprintf(layer_state_str, sizeof(layer_state_str), "Layer: Undef-%ld", layer_state);
+  }
+
+  return layer_state_str;
+}
+
 void matrix_scan_user(void) {
    iota_gfx_task();
 }
@@ -165,14 +184,19 @@ void matrix_scan_user(void) {
 void matrix_render_user(struct CharacterMatrix *matrix) {
   if (is_master) {
     // If you want to change the display of OLED, you need to change here
-    matrix_write_ln(matrix, read_layer_state());
-    matrix_write_ln(matrix, read_keylog());
-    matrix_write_ln(matrix, read_keylogs());
-    //matrix_write_ln(matrix, read_mode_icon(keymap_config.swap_lalt_lgui));
+    // matrix_write_ln(matrix, read_keylog());
+    // matrix_write_ln(matrix, read_keylogs());
     //matrix_write_ln(matrix, read_host_led_state());
-    //matrix_write_ln(matrix, read_timelog());
+    // matrix_write_ln(matrix, read_timelog());
+    matrix_write_ln(matrix, "cxxx][=============>");
+    matrix_write_ln(matrix, write_layer_state());
+    matrix_write_ln(matrix, "cxxx][=============>");
   } else {
-    matrix_write(matrix, read_logo());
+    // matrix_write(matrix, read_logo());
+    // matrix_write_ln(matrix, read_mode_icon(keymap_config.swap_lalt_lgui));
+    matrix_write_ln(matrix, "0)xxx[=====---------");
+    matrix_write_ln(matrix, "       KIRONTO");
+    matrix_write_ln(matrix, "0)xxx[=====---------");
   }
 }
 
@@ -193,15 +217,15 @@ void iota_gfx_task_user(void) {
 
 
 uint32_t layer_state_set_user(uint32_t state) {
-  return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
+  return update_tri_layer_state(state, _LOWER, _RAISE, _GAME);
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   if (record->event.pressed) {
 #ifdef SSD1306OLED
     set_keylog(keycode, record);
-#endif
     // set_timelog();
+#endif
   }
 
   switch (keycode) {
@@ -214,31 +238,49 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case LOWER:
       if (record->event.pressed) {
         layer_on(_LOWER);
-        update_tri_layer_RGB(_LOWER, _RAISE, _ADJUST);
       } else {
         layer_off(_LOWER);
-        update_tri_layer_RGB(_LOWER, _RAISE, _ADJUST);
       }
       return false;
       break;
     case RAISE:
       if (record->event.pressed) {
         layer_on(_RAISE);
-        update_tri_layer_RGB(_LOWER, _RAISE, _ADJUST);
       } else {
         layer_off(_RAISE);
-        update_tri_layer_RGB(_LOWER, _RAISE, _ADJUST);
      }
       return false;
       break;
-    case ADJUST:
+    case GAME:
         if (record->event.pressed) {
-          layer_on(_ADJUST);
+          layer_on(_GAME);
         } else {
-          layer_off(_ADJUST);
+          layer_off(_GAME);
         }
         return false;
         break;
+
+    case NEQL:
+      if (record->event.pressed) {
+        SEND_STRING("!=");
+
+      }
+      return false;
+      break;
+    case LEQL:
+      if (record->event.pressed) {
+        SEND_STRING("<=");
+
+      }
+      return false;
+      break;
+    case GEQL:
+      if (record->event.pressed) {
+        SEND_STRING(">=");
+
+      }
+      return false;
+      break;
   }
   return true;
 }
