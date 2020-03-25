@@ -24,7 +24,6 @@ enum planck_layers {
   _COLEMAK,
   _LOWER,
   _RAISE,
-  _ADJUST,
   _FN1,
   _FN2
 };
@@ -105,30 +104,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 [_RAISE] = LAYOUT_planck_grid(
-    _______, XXXXXXX,  XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX,  XXXXXXX,   XXXXXXX,  KC_TILD, KC_GRV,
-    _______, XXXXXXX,  XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX,  KC_LEFT, KC_DOWN,    KC_UP,  KC_RIGHT,  KC_PIPE, KC_DQT,
-    KC_LBRC, XXXXXXX,  XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX,  XXXXXXX,   KC_VOLU,  XXXXXXX, KC_RBRC,
-    _______, _______, _______, _______,   _______, _______,  _______, _______,  KC_MPRV,   KC_VOLD,  KC_MNXT, KC_MPLY
+    _______, KC_F1,    KC_F2,    KC_F3,    EXT_APP, XXXXXXX,  XXXXXXX, XXXXXXX,  XXXXXXX,   XXXXXXX,  KC_TILD, KC_GRV,
+    _______, KC_F5,    KC_F6,    KC_F7,      KC_F8, XXXXXXX,  KC_LEFT, KC_DOWN,    KC_UP,  KC_RIGHT,  KC_PIPE, KC_DQT,
+    KC_LBRC, KC_F9,    KC_F10,   KC_F11,    KC_F12, XXXXXXX,  XXXXXXX, XXXXXXX,  XXXXXXX,   KC_VOLU,  XXXXXXX, KC_RBRC,
+    _______, _______,  _______, _______,   _______, _______,  _______, _______,  XXXXXXX,   XXXXXXX,  XXXXXXX, XXXXXXX
 ),
 
 [_LOWER] = LAYOUT_planck_grid(
     KC_GRV,  KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN,  KC_RPRN, KC_UNDS,
-    KC_TAB,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,     KC_EQL,    LEQL,    NEQL,    GEQL,  KC_PIPE, KC_QUOT,
-    KC_LCBR, KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_PLUS, KC_MINS, KC_LABK, KC_RABK,  KC_BSLS, KC_RCBR,
+    _______,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,   KC_PLUS, KC_MINS, KC_LABK, KC_RABK,  KC_PIPE, KC_QUOT,
+    KC_LCBR, KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    LEQL,    KC_EQL,    NEQL,    GEQL,  KC_BSLS, KC_RCBR,
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
 ),
 
-[_ADJUST] = LAYOUT_planck_grid(
-    _______, _______, _______, _______, _______, _______, _______, _______, _______,  _______, _______, _______,
-    _______, _______, MU_MOD,  AU_ON,   AU_OFF,  G_SWAP,  G_SWAP,  QWERTY,  COLEMAK,  _______, _______, _______,
-    _______, MUV_DE,  MUV_IN,  MU_ON,   MU_OFF,  _______, _______, TERM_ON, TERM_OFF, _______, _______, _______,
-    _______, _______, _______, _______, _______, _______, _______, _______, _______,  _______, _______, _______
-),
-
 [_FN1] = LAYOUT_planck_grid(
-    PSCRN,     KC_F1,    KC_F2,    KC_F3,    EXT_APP, _______,  _______,  _______,  _______, _______, _______, _______,
-    TSK_MNG,   KC_F5,    KC_F6,    KC_F7,    KC_F8,   _______,  _______,  _______,  _______, _______, _______, _______,
-    DSKTOP,    KC_F9,    KC_F10,   KC_F11,   KC_F12,  _______,  _______,  _______,  _______, _______, _______, _______,
+    PSCRN,     KC_F1,    KC_F2,    KC_F3,    EXT_APP, XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    TSK_MNG,   KC_F5,    KC_F6,    KC_F7,    KC_F8,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    DSKTOP,    KC_F9,    KC_F10,   KC_F11,   KC_F12,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     LCK_SCRN,  _______,  _______,  _______,  _______, _______,  _______,  _______,  _______, _______, _______, _______
 ),
 
@@ -136,15 +128,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     QWERTY,   COLEMAK,   G_SWAP,  G_SWAP,  TERM_ON, TERM_OFF,  XXXXXXX,  XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX,  PSCRN,
     XXXXXXX,  XXXXXXX,   MU_MOD,   AU_ON,   AU_OFF,  XXXXXXX,  XXXXXXX,  XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX,
     XXXXXXX,   MUV_DE,   MUV_IN,   MU_ON,   MU_OFF,  XXXXXXX,  XXXXXXX,  XXXXXXX, XXXXXXX,  XXXXXXX, KC_VOLU, KC_MPLY,
-    XXXXXXX,   XXXXXXX,  XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX, _______,  KC_MPRV, KC_VOLD, KC_MNXT
+    XXXXXXX,  XXXXXXX,  XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX, _______,  KC_MPRV, KC_VOLD, KC_MNXT
 )
 
 };
-
-
-uint32_t layer_state_set_user(uint32_t state) {
-  return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
-}
 
 // flags for encoder and alt gui swap
 bool lalt = false, lctrl = false, lgui = false, ag_swap = true;
@@ -223,21 +210,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case NEQL:
       if (record->event.pressed) {
         SEND_STRING("!=");
-
       }
       return false;
       break;
     case LEQL:
       if (record->event.pressed) {
         SEND_STRING("<=");
-
       }
       return false;
       break;
     case GEQL:
       if (record->event.pressed) {
         SEND_STRING(">=");
-
       }
       return false;
       break;

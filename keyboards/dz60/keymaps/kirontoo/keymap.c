@@ -75,7 +75,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     // Function Layer - Custom binds
     [_FL] = LAYOUT_60_b_ansi(
-      ____,       QWERTY,  COLEMAK,  ____,    ____,    ____,     ____,     ____,     ____,     ____,     ____,     ____,      ____,    ____,      ____,
+      ____,       QWERTY,  COLEMAK,  ____,    ____,    ____,     ____,     ____,     ____,     ____,     ____,     ____,      ____,    KC_DEL,      KC_DEL,
       ____,       ____,    ____,     ____,    ____,    ____,     ____,     ____,     ____,     ____,     ____,     ____,      ____,    ____,
       ____,       KC_MINS, KC_EQL,   KC_LCBR, KC_RCBR, KC_BSLS,  KC_HOME,  KC_PGDN,  KC_PGUP,  KC_END, KC_QUOT,    KC_QUOT,   ____,
       ____,       ____,    ____,     ____,    ____,    ____,     ____,     ____,     ____,     ____,     KC_INS,   KC_PGUP,   ____,

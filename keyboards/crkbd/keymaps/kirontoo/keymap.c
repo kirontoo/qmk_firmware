@@ -94,9 +94,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------.                ,-----------------------------------------.
         TAB,  EXLM,    AT,  HASH,   DLR,  PERC,                   CIRC,  AMPR,  ASTR,  LPRN,  RPRN,  UNDS,\
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
-      CTLEC,     1,     2,     3,     4,     5,                   EQL,   LEQL,  NEQL,  GEQL,  PIPE,  QUOT,\
+      CTLEC,     1,     2,     3,     4,     5,                   PLUS,  MINS,  LABK,  RABK,  PIPE,  QUOT,\
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
-       LCBR,     6,     7,     8,     9,     0,                   PLUS,  MINS,  LABK,  RABK,  BSLS,  RCBR,\
+       LCBR,     6,     7,     8,     9,     0,                   LEQL,   EQL,  NEQL,  GEQL,  BSLS,  RCBR,\
   //|------+------+------+------+------+------+------|  |------+------+------+------+------+------+------|
                                   PSCRN,   LWR,   SPC,     BSPC,   RAS,  TSKMG \
                               //`--------------------'  `--------------------'
@@ -121,7 +121,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
        LSFT,     Z,     X,     C,     V,     B,                      N,     M, XXXXX, XXXXX, XXXXX, XXXXX,\
   //|------+------+------+------+------+------+------|  |------+------+------+------+------+------+------|
-                                    LCTL,  LWR,   SPC,     BSPC,   RAS,   LGUI \
+                                    LCTL,  SPC,   LWR,     BSPC,   RAS,   LGUI \
                               //`--------------------'  `--------------------'
   )
 };
@@ -149,29 +149,26 @@ const char *read_keylogs(void);
 // void set_timelog(void);
 // const char *read_timelog(void);
 
-
+// to display layer state on OLED
 char layer_state_str[24];
 
 const char *write_layer_state(void) {
   switch (biton32(layer_state))
   {
-
-  return layer_state_str;
-  case _COLEMAK:
-    snprintf(layer_state_str, sizeof(layer_state_str), "       COLEMAK");
-    break;
-
-  case _LOWER:
-    snprintf(layer_state_str, sizeof(layer_state_str), "       CODE");
-    break;
-  case _RAISE:
-    snprintf(layer_state_str, sizeof(layer_state_str), "       FUNCTION");
-    break;
-  case _GAME:
-    snprintf(layer_state_str, sizeof(layer_state_str), "       GAME");
-    break;
-  default:
-    snprintf(layer_state_str, sizeof(layer_state_str), "Layer: Undef-%ld", layer_state);
+    case _COLEMAK:
+        snprintf(layer_state_str, sizeof(layer_state_str), "       COLEMAK");
+        break;
+    case _LOWER:
+        snprintf(layer_state_str, sizeof(layer_state_str), "       CODE");
+        break;
+    case _RAISE:
+        snprintf(layer_state_str, sizeof(layer_state_str), "       FUNCTION");
+        break;
+    case _GAME:
+        snprintf(layer_state_str, sizeof(layer_state_str), "       GAME");
+        break;
+    default:
+        snprintf(layer_state_str, sizeof(layer_state_str), "Layer: Undef-%ld", layer_state);
   }
 
   return layer_state_str;
@@ -222,10 +219,10 @@ uint32_t layer_state_set_user(uint32_t state) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   if (record->event.pressed) {
-#ifdef SSD1306OLED
-    set_keylog(keycode, record);
-    // set_timelog();
-#endif
+    #ifdef SSD1306OLED
+        set_keylog(keycode, record);
+        // set_timelog();
+    #endif
   }
 
   switch (keycode) {
